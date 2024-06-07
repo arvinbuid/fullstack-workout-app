@@ -5,16 +5,18 @@ const express = require("express");
 const port = process.env.PORT || 5000;
 const workoutRoutes = require("./routes/workouts.js");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 // express app
 const app = express();
 
 // middleware
 app.use(express.json());
+app.use(cors());
 app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();
-});
+}); 
 
 // connect to db
 mongoose
