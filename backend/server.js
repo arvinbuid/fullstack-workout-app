@@ -2,7 +2,7 @@
 require("dotenv").config();
 
 const express = require("express");
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 4000;
 const workoutRoutes = require("./routes/workouts.js");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -16,7 +16,10 @@ app.use(cors());
 app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();
-}); 
+});
+
+// workout routes
+app.use("/api/workouts", workoutRoutes);
 
 // connect to db
 mongoose
@@ -29,6 +32,3 @@ mongoose
   .catch((error) => {
     console.log(error);
   });
-
-// workout routes
-app.use("/api/workouts", workoutRoutes);
