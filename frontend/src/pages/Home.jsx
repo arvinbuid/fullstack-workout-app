@@ -17,7 +17,7 @@ const Home = () => {
     };
 
     fetchWorkouts();
-  }, []);
+  }, [workouts]);
 
   return (
     <>
