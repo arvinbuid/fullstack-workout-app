@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-function WorkoutForm() {
+function WorkoutForm({addWorkout}) {
   const [title, setTitle] = useState("");
   const [reps, setReps] = useState("");
   const [load, setLoad] = useState("");
@@ -32,6 +32,7 @@ function WorkoutForm() {
       setLoad("");
       setError(null);
       console.log("New exercise added", json);
+      addWorkout(json); // add the new workout
     }
   };
 
