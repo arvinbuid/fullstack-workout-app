@@ -5,7 +5,7 @@ import WorkoutForm from "../components/WorkoutForm";
 const Home = () => {
   const [workouts, setWorkouts] = useState(null);
 
-  // fetch workout
+  // fetch workout from db
   useEffect(() => {
     const fetchWorkouts = async () => {
       const response = await fetch("http://localhost:4000/api/workouts");

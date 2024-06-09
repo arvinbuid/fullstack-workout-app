@@ -5,6 +5,7 @@ function WorkoutForm({addWorkout}) {
   const [reps, setReps] = useState("");
   const [load, setLoad] = useState("");
   const [error, setError] = useState(null);
+  const [emptyInputFields, setEmptyInputFields] = useState([]);
 
   const handleSubmitForm = async (e) => {
     e.preventDefault();
@@ -21,9 +22,12 @@ function WorkoutForm({addWorkout}) {
 
     const json = await response.json();
 
+    console.log(json);
+
     // check is response is okay
     if (!response.ok) {
       setError(json.error);
+      setEmptyInputFields(json.emptyInputFields);
     }
 
     if (response.ok) {
@@ -32,6 +36,7 @@ function WorkoutForm({addWorkout}) {
       setLoad("");
       setError(null);
       console.log("New exercise added", json);
+      setEmptyInputFields([]);
       addWorkout(json); // add the new workout
     }
   };
@@ -50,21 +55,27 @@ function WorkoutForm({addWorkout}) {
             type='text'
             onChange={(e) => setTitle(e.target.value)}
             value={title}
-            className='p-2 border border-slate-600 rounded-md'
+            className={`${
+              emptyInputFields.includes("title") ? "border border-red-600" : " "
+            } p-2 border border-slate-600 rounded-md`}
           />
           <label>Load (in kg): </label>
           <input
             type='number'
             onChange={(e) => setReps(e.target.value)}
             value={reps}
-            className='p-2 border border-slate-600 rounded-md'
+            className={`p-2 ${
+              emptyInputFields.includes("reps") ? "border border-red-600" : " "
+            } border border-slate-600 rounded-md`}
           />
           <label>Reps:</label>
           <input
             type='number'
             onChange={(e) => setLoad(e.target.value)}
             value={load}
-            className='p-2 border border-slate-600 rounded-md'
+            className={`p-2 ${
+              emptyInputFields.includes("load") ? "border border-red-600" : " "
+            } border border-slate-600 rounded-md`}
           />
 
           <button className='mt-4 bg-blue-400 p-4 text-white rounded-md'>Submit</button>
