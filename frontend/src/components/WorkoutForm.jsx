@@ -45,7 +45,7 @@ function WorkoutForm({addWorkout}) {
     <section>
       <form
         onSubmit={handleSubmitForm}
-        className='bg-white p-6 rounded-lg sm:w-[500px] lg:w-full m-auto'
+        className='bg-white p-6 rounded-lg sm:w-[500px] lg:w-[450px] m-auto'
       >
         <h3 className='text-3xl font-bold mb-6'>Create a New Workout</h3>
 

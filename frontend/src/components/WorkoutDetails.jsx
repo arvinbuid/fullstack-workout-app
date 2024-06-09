@@ -1,3 +1,5 @@
+import {formatDistanceToNow} from "date-fns";
+
 function WorkoutDetails({workout, deleteWorkout}) {
   const handleDelete = async () => {
     const response = await fetch("http://localhost:4000/api/workouts/" + workout._id, {
@@ -29,7 +31,7 @@ function WorkoutDetails({workout, deleteWorkout}) {
             <p>
               <span className='font-bold'>Reps:</span> {workout.reps}
             </p>
-            <p>{workout.createdAt}</p>
+            <p>{formatDistanceToNow(workout.createdAt, {addSuffix: true, includeSeconds: true})}</p>
           </div>
           <div className=''>
             <button onClick={handleDelete}>
