@@ -7,7 +7,16 @@ const userLogin = async (req, res) => {
 
 // user signup
 const userSignup = async (req, res) => {
-  res.json({message: "user signup"});
+  const {email, password} = req.body;
+
+  try {
+    const user = await User.signup(email, password);
+
+    // if success
+    res.status(201).json({email, user});
+  } catch (error) {
+    res.status(400).json({error: error.message});
+  }
 };
 
 module.exports = {
