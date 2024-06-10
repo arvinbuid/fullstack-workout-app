@@ -1,4 +1,5 @@
 import {useState} from "react";
+import toast, {Toaster} from "react-hot-toast";
 
 function WorkoutForm({addWorkout}) {
   const [title, setTitle] = useState("");
@@ -7,6 +8,7 @@ function WorkoutForm({addWorkout}) {
   const [error, setError] = useState(null);
   const [emptyInputFields, setEmptyInputFields] = useState([]);
 
+  // create new workout
   const handleSubmitForm = async (e) => {
     e.preventDefault();
 
@@ -28,6 +30,7 @@ function WorkoutForm({addWorkout}) {
     if (!response.ok) {
       setError(json.error);
       setEmptyInputFields(json.emptyInputFields);
+      toast.error("Error creating workout.");
     }
 
     if (response.ok) {
@@ -38,6 +41,7 @@ function WorkoutForm({addWorkout}) {
       console.log("New exercise added", json);
       setEmptyInputFields([]);
       addWorkout(json); // add the new workout
+      toast.success("Workout successfully created!.");
     }
   };
 
@@ -86,6 +90,7 @@ function WorkoutForm({addWorkout}) {
           </div>
         )}
       </form>
+      <Toaster position='top-right' />
     </section>
   );
 }

@@ -1,23 +1,35 @@
 import {useEffect, useState} from "react";
 import WorkoutDetails from "../components/WorkoutDetails";
 import WorkoutForm from "../components/WorkoutForm";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const Home = () => {
   const [workouts, setWorkouts] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   // fetch workout from db
   useEffect(() => {
     const fetchWorkouts = async () => {
+      setIsLoading(true);
       const response = await fetch("http://localhost:4000/api/workouts");
       const json = await response.json();
 
       if (response.ok) {
         setWorkouts(json);
+        setIsLoading(false);
       }
     };
 
     fetchWorkouts();
   }, []);
+
+  if (isLoading) {
+    return (
+      <div className='w-[900px] h-[400px] flex justify-center items-center'>
+        <ClipLoader color='#36d7b7' size={100} />
+      </div>
+    );
+  }
 
   // delete workout
   const handleDeleteWorkout = (id) => {

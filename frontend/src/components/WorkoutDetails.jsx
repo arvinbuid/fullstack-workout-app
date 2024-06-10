@@ -1,4 +1,5 @@
 import {formatDistanceToNow} from "date-fns";
+import toast, {Toaster} from "react-hot-toast";
 
 function WorkoutDetails({workout, deleteWorkout}) {
   const handleDelete = async () => {
@@ -9,12 +10,13 @@ function WorkoutDetails({workout, deleteWorkout}) {
     const json = await response.json();
 
     if (!response.ok) {
-      console.log(json.error);
+      toast.error("Error deleting workout.");
       return;
     }
 
     if (response.ok) {
       deleteWorkout(json._id);
+      toast.success("Workouts successfully deleted.");
     }
   };
 
@@ -55,6 +57,7 @@ function WorkoutDetails({workout, deleteWorkout}) {
           </div>
         </div>
       </div>
+      <Toaster position='top-right' />
     </section>
   );
 }
