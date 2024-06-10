@@ -4,6 +4,7 @@ require("dotenv").config();
 const express = require("express");
 const port = process.env.PORT || 4000;
 const workoutRoutes = require("./routes/workouts.js");
+const userRoutes = require("./routes/user.js");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
@@ -18,8 +19,9 @@ app.use((req, res, next) => {
   next();
 });
 
-// workout routes
+// routes
 app.use("/api/workouts", workoutRoutes);
+app.use("/api/workouts", userRoutes);
 
 // connect to db
 mongoose
