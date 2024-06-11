@@ -1,15 +1,17 @@
 import {useState} from "react";
 import toast, {Toaster} from "react-hot-toast";
+import {useWorkoutsContext} from "../hooks/useWorkoutsContext";
 
-function WorkoutForm({addWorkout}) {
+function WorkoutForm() {
   const [title, setTitle] = useState("");
   const [reps, setReps] = useState("");
   const [load, setLoad] = useState("");
   const [error, setError] = useState(null);
   const [emptyInputFields, setEmptyInputFields] = useState([]);
+  const {dispatch} = useWorkoutsContext();
 
   // create new workout
-  const handleSubmitForm = async (e) => {
+  const handleCreateWorkout = async (e) => {
     e.preventDefault();
 
     const workout = {title, reps, load};
@@ -23,8 +25,6 @@ function WorkoutForm({addWorkout}) {
     });
 
     const json = await response.json();
-
-    console.log(json);
 
     // check is response is okay
     if (!response.ok) {
@@ -40,7 +40,7 @@ function WorkoutForm({addWorkout}) {
       setError(null);
       console.log("New exercise added", json);
       setEmptyInputFields([]);
-      addWorkout(json); // add the new workout
+      dispatch({type: "CREATE_WORKOUT", payload: json});
       toast.success("Workout successfully created!.");
     }
   };
@@ -48,7 +48,7 @@ function WorkoutForm({addWorkout}) {
   return (
     <section>
       <form
-        onSubmit={handleSubmitForm}
+        onSubmit={handleCreateWorkout}
         className='bg-white p-6 rounded-lg sm:w-[500px] lg:w-[450px] m-auto'
       >
         <h3 className='text-3xl font-bold mb-6'>Create a New Workout</h3>

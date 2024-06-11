@@ -1,8 +1,11 @@
 import {formatDistanceToNow} from "date-fns";
 import toast, {Toaster} from "react-hot-toast";
+import {useWorkoutsContext} from "../hooks/useWorkoutsContext";
 
-function WorkoutDetails({workout, deleteWorkout}) {
-  const handleDelete = async () => {
+function WorkoutDetails({workout}) {
+  const {dispatch} = useWorkoutsContext();
+
+  const handleDeleteWorkout = async () => {
     const response = await fetch("http://localhost:4000/api/workouts/" + workout._id, {
       method: "DELETE",
     });
@@ -15,7 +18,8 @@ function WorkoutDetails({workout, deleteWorkout}) {
     }
 
     if (response.ok) {
-      deleteWorkout(json._id);
+      dispatch({type: "DELETE_WORKOUT", payload: json});
+      console.log("Workout deleted!");
       toast.success("Workouts successfully deleted.");
     }
   };
@@ -36,7 +40,7 @@ function WorkoutDetails({workout, deleteWorkout}) {
             <p>{formatDistanceToNow(workout.createdAt, {addSuffix: true, includeSeconds: true})}</p>
           </div>
           <div className=''>
-            <button onClick={handleDelete}>
+            <button onClick={handleDeleteWorkout}>
               <p className='text-red-600'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
