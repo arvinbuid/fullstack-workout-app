@@ -29,6 +29,10 @@ function WorkoutForm() {
     // check is response is okay
     if (!response.ok) {
       setError(json.error);
+      setTimeout(() => {
+        setError(null);
+      }, 3000);
+
       setEmptyInputFields(json.emptyInputFields);
       toast.error("Error creating workout.");
     }
