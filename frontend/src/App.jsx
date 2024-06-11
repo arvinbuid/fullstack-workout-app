@@ -5,7 +5,7 @@ function App() {
   return (
     <main>
       <Navbar />
-      <div className='w-full h-auto bg-gray-200'>
+      <div className='w-full h-auto'>
         <Outlet />
       </div>
     </main>

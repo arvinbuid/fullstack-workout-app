@@ -53,11 +53,11 @@ function WorkoutForm() {
     <section>
       <form
         onSubmit={handleCreateWorkout}
-        className='bg-white p-6 rounded-lg sm:w-[500px] lg:w-[450px] m-auto'
+        className='bg-white px-12 py-10 rounded-lg sm:w-[500px] lg:w-[450px] m-auto shadow-lg'
       >
-        <h3 className='text-3xl font-bold mb-6'>Create a New Workout</h3>
+        <h2 className='text-3xl font-bold mb-6'>Create a New Workout</h2>
 
-        <div className='flex flex-col gap-2'>
+        <div className='flex flex-col gap-4'>
           <label>Exercise: </label>
           <input
             type='text'
@@ -86,7 +86,9 @@ function WorkoutForm() {
             } border border-slate-600 rounded-md`}
           />
 
-          <button className='mt-4 bg-blue-400 p-4 text-white rounded-md'>Submit</button>
+          <button type='submit' className='mt-4 bg-blue-400 p-4 text-white rounded-md'>
+            Submit
+          </button>
         </div>
         {error && (
           <div className='bg-red-500 px-4 p-2 w-full text-center text-white mt-4'>
