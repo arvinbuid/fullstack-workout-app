@@ -1,8 +1,10 @@
 import {Link} from "react-router-dom";
 import {useLogout} from "../hooks/useLogout";
+import {useAuthContext} from "../hooks/useAuthContext";
 
 function Navbar() {
   const {logout} = useLogout();
+  const {user} = useAuthContext();
 
   const handleLogout = () => {
     logout();
@@ -20,20 +22,26 @@ function Navbar() {
         {/* logout */}
 
         <div className='hidden sm:flex items-center gap-4 '>
-          <div>
-            <button
-              onClick={handleLogout}
-              className='p-2 border-2 border-blue-400 rounded-lg hover:bg-blue-100'
-            >
-              <p className='text-xl font-semibold '>Logout</p>
-            </button>
-          </div>
-          <Link to='/login'>
-            <p className='text-xl font-semibold'>Login</p>
-          </Link>
-          <Link to='/signup'>
-            <p className='text-xl font-semibold'>Signup</p>
-          </Link>
+          {user ? (
+            <div className='flex items-center gap-2'>
+              <p className='text-lg font-semibold'>{user.email}</p>
+              <button
+                onClick={handleLogout}
+                className='p-2 border-2 border-blue-400 rounded-lg hover:bg-blue-100'
+              >
+                <p className='text-xl font-semibold '>Logout</p>
+              </button>
+            </div>
+          ) : (
+            <>
+              <Link to='/login'>
+                <p className='text-xl font-semibold'>Login</p>
+              </Link>
+              <Link to='/signup'>
+                <p className='text-xl font-semibold'>Signup</p>
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </nav>
