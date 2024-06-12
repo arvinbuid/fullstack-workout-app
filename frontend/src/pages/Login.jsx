@@ -1,13 +1,15 @@
 import {useState} from "react";
+import {useLogin} from "../hooks/useLogin";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const {login, error, isLoading} = useLogin();
 
-  const handleLoginSubmit = (e) => {
+  const handleLoginSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(email, password);
+    await login(email, password);
   };
 
   return (
@@ -37,6 +39,7 @@ function Login() {
           <button
             type='submit'
             className='flex gap-1 mt-6 justify-center bg-blue-400 p-4 text-white rounded-md'
+            disabled={isLoading}
           >
             <svg
               xmlns='http://www.w3.org/2000/svg'
@@ -54,6 +57,11 @@ function Login() {
             </svg>
             Login
           </button>
+          {error && (
+            <div className='bg-red-500 px-4 p-2 w-full text-center text-white mt-4'>
+              <p>{error}</p>
+            </div>
+          )}
         </div>
       </form>
     </section>
