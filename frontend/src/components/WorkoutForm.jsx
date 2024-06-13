@@ -1,6 +1,7 @@
 import {useState} from "react";
 import toast, {Toaster} from "react-hot-toast";
 import {useWorkoutsContext} from "../hooks/useWorkoutsContext";
+import {useAuthContext} from "../hooks/useAuthContext";
 
 function WorkoutForm() {
   const [title, setTitle] = useState("");
@@ -9,10 +10,16 @@ function WorkoutForm() {
   const [error, setError] = useState(null);
   const [emptyInputFields, setEmptyInputFields] = useState([]);
   const {dispatch} = useWorkoutsContext();
+  const {user} = useAuthContext();
 
   // create new workout
   const handleCreateWorkout = async (e) => {
     e.preventDefault();
+
+    if (!user) {
+      setError("You must be logged in to add workout.");
+      return;
+    }
 
     const workout = {title, reps, load};
 
@@ -21,6 +28,7 @@ function WorkoutForm() {
       body: JSON.stringify(workout),
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${user.token}`,
       },
     });
 

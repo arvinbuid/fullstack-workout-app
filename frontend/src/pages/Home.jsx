@@ -3,16 +3,22 @@ import WorkoutDetails from "../components/WorkoutDetails";
 import WorkoutForm from "../components/WorkoutForm";
 import ClipLoader from "react-spinners/ClipLoader";
 import {useWorkoutsContext} from "../hooks/useWorkoutsContext";
+import {useAuthContext} from "../hooks/useAuthContext";
 
 const Home = () => {
   const {workouts, dispatch} = useWorkoutsContext();
   const [isLoading, setIsLoading] = useState(false);
+  const {user} = useAuthContext();
 
   // fetch workout from db
   useEffect(() => {
     const fetchWorkouts = async () => {
       setIsLoading(true);
-      const response = await fetch("http://localhost:4000/api/workouts");
+      const response = await fetch("http://localhost:4000/api/workouts", {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
       const json = await response.json();
 
       if (response.ok) {
@@ -21,7 +27,10 @@ const Home = () => {
       }
     };
 
-    fetchWorkouts();
+    // when user exists, run this function
+    if (user) {
+      fetchWorkouts();
+    }
   }, []);
 
   if (isLoading) {
