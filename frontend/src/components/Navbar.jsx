@@ -28,8 +28,12 @@ function Navbar() {
 
         <div className='hidden sm:flex items-center gap-6 tracking-tight'>
           {user ? (
-            <div className='text-xl transition transform hover:border-b-2 border-green-600 py-2 '>
-              <button onClick={handleLogout} className='flex items-center gap-2'>
+            <div className='flex items-center gap-4'>
+              <p className='text-lg px-2 font-semibold'>{user.email}</p>
+              <button
+                onClick={handleLogout}
+                className='flex items-center gap-2 text-xl transition transform hover:border-b-2 border-green-600 py-2 '
+              >
                 <IoMdLogOut className='text-blue-800' />
                 <p className='font-semibold'>LOGOUT</p>
               </button>

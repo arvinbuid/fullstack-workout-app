@@ -5,6 +5,7 @@ import {useAuthContext} from "./hooks/useAuthContext";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
 
 function App() {
   const {user} = useAuthContext();
@@ -17,6 +18,7 @@ function App() {
             <Route path='/' element={user ? <Home /> : <Navigate to='/login' />} />
             <Route path='/login' element={!user ? <Login /> : <Navigate to='/' />} />
             <Route path='/signup' element={!user ? <Signup /> : <Navigate to='/' />} />
+            <Route path='*' element={<NotFound />} />
           </Routes>
         </div>
       </BrowserRouter>
