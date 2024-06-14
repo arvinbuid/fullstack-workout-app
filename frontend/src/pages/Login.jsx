@@ -13,7 +13,7 @@ function Login() {
   };
 
   return (
-    <section className='w-full h-[85vh] flex justify-center items-center'>
+    <section className='w-full h-[85vh] flex justify-center items-center px-6'>
       <form
         onSubmit={handleLoginSubmit}
         className='flex flex-col w-[400px] border-2 border-blue-400 px-10 py-8 rounded-lg bg-white'
@@ -28,6 +28,7 @@ function Login() {
             value={email}
             className='p-2 border border-slate-600 rounded-md'
           />
+
           <label>Password: </label>
           <input
             type='password'

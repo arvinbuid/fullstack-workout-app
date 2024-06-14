@@ -13,7 +13,7 @@ function Signup() {
   };
 
   return (
-    <section className='w-full h-[85vh] flex justify-center items-center'>
+    <section className='w-full h-[85vh] flex justify-center items-center px-6'>
       <form
         onSubmit={handleSignupSubmit}
         className='flex flex-col w-[400px] border-2 border-blue-400 px-10 py-8 rounded-lg bg-white'
