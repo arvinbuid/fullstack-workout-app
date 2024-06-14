@@ -1,6 +1,10 @@
 import {Link} from "react-router-dom";
 import {useLogout} from "../hooks/useLogout";
 import {useAuthContext} from "../hooks/useAuthContext";
+import {GiMuscleUp} from "react-icons/gi";
+import {FaUserCircle} from "react-icons/fa";
+import {FaRegUserCircle} from "react-icons/fa";
+import {IoMdLogOut} from "react-icons/io";
 
 function Navbar() {
   const {logout} = useLogout();
@@ -15,30 +19,34 @@ function Navbar() {
     <nav className='w-full h-[100px] flex justify-center items-center border-b-2 border-slate-300 bg-white'>
       <div className='w-[80%] px-2 py-4 flex justify-between'>
         <Link to={"/"}>
-          <h1 className='text-3xl font-bold'>
-            Workout <span className='text-green-600'>App</span>
-          </h1>
+          <span className='text-3xl text-blue-800 flex gap-4 items-center'>
+            <GiMuscleUp />
+            <p className='text-black tracking-tight font-bold py-2'>WORKOUT</p>
+          </span>
         </Link>
         {/* logout */}
 
-        <div className='hidden sm:flex items-center gap-4 '>
+        <div className='hidden sm:flex items-center gap-6 tracking-tight'>
           {user ? (
-            <div className='flex items-center gap-2'>
-              <p className='text-lg font-semibold'>{user.email}</p>
-              <button
-                onClick={handleLogout}
-                className='p-2 border-2 border-blue-400 rounded-lg hover:bg-blue-100'
-              >
-                <p className='text-xl font-semibold text-blue-600'>Logout</p>
+            <div className='text-xl transition transform hover:border-b-2 border-green-600 py-2 '>
+              <button onClick={handleLogout} className='flex items-center gap-2'>
+                <IoMdLogOut className='text-blue-800' />
+                <p className='font-semibold'>LOGOUT</p>
               </button>
             </div>
           ) : (
             <>
               <Link to='/login'>
-                <p className='text-xl font-semibold'>Login</p>
+                <div className='flex items-center gap-2 text-xl transition transform hover:border-b-2 border-green-600 pb-2 hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none'>
+                  <FaUserCircle className='text-blue-800' />
+                  <p className='font-semibold'>LOGIN</p>
+                </div>
               </Link>
               <Link to='/signup'>
-                <p className='text-xl font-semibold'>Signup</p>
+                <div className='flex items-center gap-2 text-xl transition transform hover:border-b-2 border-green-600 pb-2 hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none'>
+                  <FaRegUserCircle className='text-blue-800' />
+                  <p className='font-semibold'>SIGNUP</p>
+                </div>
               </Link>
             </>
           )}

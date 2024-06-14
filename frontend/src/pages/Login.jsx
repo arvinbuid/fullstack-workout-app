@@ -18,7 +18,7 @@ function Login() {
         onSubmit={handleLoginSubmit}
         className='flex flex-col w-[400px] border-2 border-blue-400 px-10 py-8 rounded-lg bg-white'
       >
-        <h3 className='text-3xl font-bold mb-6'>Login</h3>
+        <h3 className='text-3xl font-bold mb-6'>LOGIN</h3>
 
         <div className='flex flex-col gap-2'>
           <label>Email: </label>
