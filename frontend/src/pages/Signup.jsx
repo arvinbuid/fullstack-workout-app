@@ -1,15 +1,21 @@
 import {useState} from "react";
 import {useSignup} from "../hooks/useSignup";
+import {FaEye, FaEyeSlash} from "react-icons/fa";
 
 function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const {signup, error, isLoading} = useSignup();
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSignupSubmit = async (e) => {
     e.preventDefault();
 
     await signup(email, password);
+  };
+
+  const toggleShowPassword = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
   return (
@@ -26,15 +32,23 @@ function Signup() {
             type='text'
             onChange={(e) => setEmail(e.target.value)}
             value={email}
-            className='p-2 border border-slate-600 rounded-md'
+            className='p-3 border border-slate-600 rounded-md focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500'
           />
           <label>Password: </label>
-          <input
-            type='password'
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
-            className='p-2 border border-slate-600 rounded-md'
-          />
+          <div className='w-full flex flex-col gap-2 relative'>
+            <input
+              type={showPassword ? "text" : "password"}
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+              className='p-3 border border-slate-600 rounded-md focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500'
+            />
+            <span
+              onClick={toggleShowPassword}
+              className='absolute right-0 top-4 pr-4 cursor-pointer text-blue-600'
+            >
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </span>
+          </div>
 
           <button
             type='submit'
@@ -58,7 +72,7 @@ function Signup() {
             Sign up
           </button>
           {error && (
-            <div className='bg-red-500 px-4 p-2 w-full text-center text-white mt-4'>
+            <div className='bg-red-500 p-4 w-full text-center text-white'>
               <p>{error}</p>
             </div>
           )}
