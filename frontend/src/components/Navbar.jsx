@@ -29,7 +29,7 @@ function Navbar() {
                 onClick={handleLogout}
                 className='p-2 border-2 border-blue-400 rounded-lg hover:bg-blue-100'
               >
-                <p className='text-xl font-semibold '>Logout</p>
+                <p className='text-xl font-semibold text-blue-600'>Logout</p>
               </button>
             </div>
           ) : (
