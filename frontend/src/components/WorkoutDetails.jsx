@@ -33,11 +33,11 @@ function WorkoutDetails({workout}) {
   };
 
   return (
-    <section className='xs:[80vw] lg:w-[60vw] flex justify-center mx-6'>
-      <div className='xs:w-full lg:w-[50vw] px-6 py-6 rounded-md bg-white shadow-md '>
-        <div className='text-md md:text-lg flex justify-between '>
+    <section className='xs:[80vw] lg:w-[60vw] flex justify-center px-4'>
+      <div className='w-full px-8 py-6 rounded-md bg-white shadow-md '>
+        <div className='text-lg flex justify-between '>
           <div className='flex-col'>
-            <h2 className='text-2xl md:text-3xl font-bold text-green-600 mb-4'>{workout.title}</h2>
+            <h2 className='text-3xl font-bold text-green-600 mb-4'>{workout.title}</h2>
             <p>
               <span className='font-bold'>Load (in kg): </span>
               {workout.load}
@@ -47,7 +47,7 @@ function WorkoutDetails({workout}) {
             </p>
             <p>{formatDistanceToNow(workout.createdAt, {addSuffix: true, includeSeconds: true})}</p>
           </div>
-          <div className=''>
+          <div className='pt-2'>
             <button onClick={handleDeleteWorkout}>
               <p className='text-red-600'>
                 <svg

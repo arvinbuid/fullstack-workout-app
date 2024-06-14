@@ -17,7 +17,7 @@ function Navbar() {
 
   return (
     <nav className='w-full h-[100px] flex justify-center items-center border-b-2 border-slate-300 bg-white'>
-      <div className='w-[80%] px-2 py-4 flex justify-between'>
+      <div className='w-[80vw] px-2 py-4 flex justify-between'>
         <Link to={"/"}>
           <span className='text-3xl text-blue-800 flex gap-4 items-center'>
             <GiMuscleUp />

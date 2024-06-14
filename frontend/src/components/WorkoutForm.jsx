@@ -61,10 +61,9 @@ function WorkoutForm() {
     <section>
       <form
         onSubmit={handleCreateWorkout}
-        className='bg-white px-12 py-10 rounded-lg sm:w-[500px] lg:w-[450px] m-auto shadow-lg'
+        className='bg-white px-12 py-10 rounded-lg max-w-[480px] m-auto shadow-lg'
       >
         <h2 className='text-3xl font-bold mb-6'>Create a New Workout</h2>
-
         <div className='flex flex-col gap-4'>
           <label>Exercise: </label>
           <input
