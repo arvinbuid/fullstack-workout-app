@@ -11,9 +11,18 @@ const cors = require("cors");
 // express app
 const app = express();
 
+// Configure CORS options
+const corsOptions = {
+  origin: "https://mern-workout-app-navy.vercel.app", // replace with your Vercel domain
+  optionsSuccessStatus: 200, // For legacy browser support
+  methods: "GET, POST, DELETE", // Allowed methods
+  allowedHeaders: "Content-Type,Authorization", // Allowed headers
+  credentials: true, // Allow credentials (cookies, authorization headers, etc.)
+};
+
 // middleware
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();
