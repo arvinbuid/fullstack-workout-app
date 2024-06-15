@@ -14,7 +14,7 @@ const Home = () => {
   useEffect(() => {
     const fetchWorkouts = async () => {
       setIsLoading(true);
-      const response = await fetch("http://fullstack-workout-app-api.vercel.app/api/workouts", {
+      const response = await fetch("https://fullstack-workout-app-api.vercel.app/api/workouts", {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },

@@ -12,7 +12,7 @@ function WorkoutDetails({workout}) {
       return;
     }
     const response = await fetch(
-      "http://fullstack-workout-app-api.vercel.app/api/workouts/" + workout._id,
+      "https://fullstack-workout-app-api.vercel.app/api/workouts/" + workout._id,
       {
         method: "DELETE",
         headers: {
