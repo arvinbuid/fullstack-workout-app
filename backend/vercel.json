@@ -11,9 +11,5 @@
       "src": "/(.*)",
       "dest": "server.js"
     }
-  ],
-  "env": {
-    "PORT": "4000",
-    "MONGO_URI": "mongodb+srv://arvin:kyaaskadiorca22@clusterprojects.7tuevsj.mongodb.net/?retryWrites=true&w=majority&appName=ClusterProjects"
-  }
+  ]
 }
