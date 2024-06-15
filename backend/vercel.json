@@ -1,5 +1,19 @@
 {
   "version": 2,
-  "builds": [{"src": "./server.js", "use": "@vercel/node"}],
-  "routes": [{"src": "/(.*)", "dest": "/"}]
+  "builds": [
+    {
+      "src": "server.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "server.js"
+    }
+  ],
+  "env": {
+    "PORT": "4000",
+    "MONGO_URI": "@mongo_uri"
+  }
 }
