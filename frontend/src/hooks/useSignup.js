@@ -9,7 +9,7 @@ export const useSignup = () => {
   const signup = async (email, password) => {
     setIsLoading(true);
 
-    const response = await fetch("http://fullstack-workout-app-api.vercel.app/api/user/signup", {
+    const response = await fetch("https://fullstack-workout-app-api.vercel.app/api/user/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
