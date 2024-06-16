@@ -28,7 +28,7 @@ function Signup() {
         </div>
         <form
           onSubmit={handleSignupSubmit}
-          className='flex flex-col w-[400px] h-auto border-2 border-blue-400 px-10 pt-8 pb-10 rounded-lg bg-white'
+          className='flex flex-col w-[400px] h-auto border-2 border-blue-400 px-10 py-8 rounded-lg bg-white'
         >
           <h3 className='text-3xl font-bold mb-6'>SIGN UP</h3>
 
@@ -58,7 +58,7 @@ function Signup() {
 
             <button
               type='submit'
-              className='flex gap-1 mt-6 justify-center bg-blue-400 p-4 text-white rounded-md'
+              className='flex gap-1 mt-4 justify-center bg-blue-400 p-4 text-white rounded-md'
               disabled={isLoading}
             >
               <svg
