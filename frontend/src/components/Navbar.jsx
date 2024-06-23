@@ -21,7 +21,7 @@ function Navbar() {
         <Link to={"/"}>
           <span className='text-3xl text-blue-800 flex gap-4 items-center'>
             <GiMuscleUp />
-            <p className='text-black tracking-tight font-bold py-2 hidden sm:flex'>WORKOUT</p>
+            <p className='text-black tracking-tight font-bold py-2 xs:flex'>WORKOUT</p>
           </span>
         </Link>
         {/* logout */}
