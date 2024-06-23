@@ -40,7 +40,7 @@ function Navbar() {
             </div>
           ) : (
             <>
-              <div className='hidden sm:flex gap-4  '>
+              <div className='flex gap-4'>
                 <Link to='/login'>
                   <div className='flex items-center gap-2 text-xl transition transform hover:border-b-2 border-green-600 pb-2 hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none'>
                     <FaUserCircle className='text-blue-800' />
